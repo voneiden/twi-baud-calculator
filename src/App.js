@@ -133,7 +133,7 @@ const TWIMode = observer(function TWIMode() {
         <div>{spec.maxNanoRise}</div>
         <div>ns</div>
       </div>
-      <div className="row">
+      <div className="row margin-bottom">
         <div>Max capacitance</div>
         <div>{spec.maxPF}</div>
         <div>pF</div>
@@ -179,7 +179,7 @@ const BaudRateCalculator = observer(function BaudRateCalculator(props) {
         <input value={MHzMcu} onChange={e => setMHzMcu(e.target.value)}/>
         <div>MHz</div>
       </div>
-      <div className='row'>
+      <div className='row margin-bottom'>
         <div>Bus frequency</div>
         <input className={kHzBus > spec.maxKHzBus ? 'error' : ''} value={kHzBus}
                onChange={e => setKHzBus(e.target.value)}/>
