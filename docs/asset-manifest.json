@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/twi-baud-calculator/static/css/main.7b087aca.chunk.css",
+    "main.js": "/twi-baud-calculator/static/js/main.455878de.chunk.js",
+    "main.js.map": "/twi-baud-calculator/static/js/main.455878de.chunk.js.map",
+    "runtime-main.js": "/twi-baud-calculator/static/js/runtime-main.d738e60d.js",
+    "runtime-main.js.map": "/twi-baud-calculator/static/js/runtime-main.d738e60d.js.map",
+    "static/js/2.5dfea3cf.chunk.js": "/twi-baud-calculator/static/js/2.5dfea3cf.chunk.js",
+    "static/js/2.5dfea3cf.chunk.js.map": "/twi-baud-calculator/static/js/2.5dfea3cf.chunk.js.map",
+    "index.html": "/twi-baud-calculator/index.html",
+    "precache-manifest.98745fc3da3dd5bc0e6c61e4e6d72126.js": "/twi-baud-calculator/precache-manifest.98745fc3da3dd5bc0e6c61e4e6d72126.js",
+    "service-worker.js": "/twi-baud-calculator/service-worker.js",
+    "static/css/main.7b087aca.chunk.css.map": "/twi-baud-calculator/static/css/main.7b087aca.chunk.css.map",
+    "static/js/2.5dfea3cf.chunk.js.LICENSE.txt": "/twi-baud-calculator/static/js/2.5dfea3cf.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d738e60d.js",
+    "static/js/2.5dfea3cf.chunk.js",
+    "static/css/main.7b087aca.chunk.css",
+    "static/js/main.455878de.chunk.js"
+  ]
+}

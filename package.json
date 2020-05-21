@@ -1,6 +1,7 @@
 {
   "name": "twi-baud-calculator",
   "version": "1.0.0",
+  "homepage": "https://voneiden.github.io/twi-baud-calculator/",
   "private": true,
   "dependencies": {
     "node-sass": "^4.14.1",
