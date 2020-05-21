@@ -1,0 +1,94 @@
+.title {
+  font-family: 'VT323', monospace;
+  font-size: 96px;
+  margin-top: 20px;
+}
+
+.subtitle {
+  font-family: 'VT323', monospace;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.info {
+  margin-bottom: 20px;
+}
+
+.main-view {
+  font-family: 'VT323', monospace;
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+  > * {
+    width: 100%;
+  }
+
+  .twi-mode {
+    button {
+      font-family: 'VT323', monospace;
+      background-color: green;
+      border-color: lime;
+      color: white;
+      font-size: calc(10px + 2vmin);
+
+      &.selected {
+        border-width: 5px;
+        background-color: darkgreen;
+      }
+
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+
+      &:not(:first-child) {
+        margin-left: 5px;
+      }
+
+      margin-bottom: 20px;
+    }
+  }
+
+  .row {
+    //display: flex;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+
+    > *:nth-child(1) {
+      justify-self: flex-end;
+      padding-right: 10px;
+    }
+
+    > *:nth-child(2) {
+      width: 75px;
+    }
+
+    > *:nth-child(3) {
+      padding-left: 10px;
+      justify-self: flex-start;
+    }
+
+    input {
+      font-family: 'VT323', monospace;
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      font-size: calc(10px + 2vmin);
+      border: 1px solid grey;
+
+      text-align: center;
+
+      &.error {
+        color: red;
+      }
+    }
+  }
+}
