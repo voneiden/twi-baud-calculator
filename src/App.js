@@ -195,15 +195,17 @@ const MainView = function MainView() {
 
   return (
     <div className="main-view">
-      <div className='title'>TWI BAUD Calculator</div>
+      <div className='title'>TWI I<sup>2</sup>C BAUD Calculator</div>
       <div className='subtitle'>For ATtiny 1-series and similar devices</div>
       <div className='info'>
-        Estimate your TWI BAUD rate and pull-up resistors.<br/>
-        If a pull-up is too high, it will may not manage to pull the signal to logic high during a single clock
-        cycle.<br/>
-        If a pull-up is too low, the bus devices may not be able to sink enough current to pull the signal to logic low.<br/>
+        Estimate your TWI I<sup>2</sup>C BAUD rate and pull-up resistors.<br/>
+        A too high pull-up resistance may not manage to pull the signal to logic high during a single clock cycle.<br/>
+        A too low pull-up resistance may lead to bus devices being unable to sink enough current to pull the signal to logic low.<br/>
         Bus capacitance can be very roughly estimated by adding 20 pF for every device on the bus if distances are
-        short.
+        short. <br/>
+        BAUD in this context determines how long a clock signal is kept high after a high level is detected. Therefore a higher
+        BAUD results in a slower bus clock. In practice due to bus capacitance and pull-up resistance some time of the clock cycle is
+        lost while the bus voltage rises to a logic high (T<sub>rise</sub>). To compensate for this, BAUD can be set to a lower value.
       </div>
       <TWIMode/>
       <RiseTimeCalculator/>
