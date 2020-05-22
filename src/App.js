@@ -83,10 +83,12 @@ const StoreModel = types.model({
     return vcc >= 2 ? self.spec.maxLowVoltage : self.spec.maxLowVoltageBelowTwo(vcc)
   },
   get minR() {
-    return (parseFloat(self.form.vcc) - self.maxLowVoltage) / self.sinkMA
+    const R = (parseFloat(self.form.vcc) - self.maxLowVoltage) / self.sinkMA
+    return Math.ceil(R*10) / 10
   },
   get maxR() {
-    return self.spec.maxNanoRise / (0.8473 * parseFloat(self.form.pF))
+    const R = self.spec.maxNanoRise / (0.8473 * parseFloat(self.form.pF))
+    return Math.floor(R*10) / 10
   },
   get baud() {
     const riseTime = self.nanoRiseTime / 1e9
@@ -149,11 +151,23 @@ const RiseTimeCalculator = observer(function RiseTimeCalclator() {
   const {maxLowVoltage, minR, maxR, spec} = store
   const {vcc, setVcc, pF, setPF, kOhm, setKOhm} = store.form
 
+  const minmax = minR <= maxR ? (
+    <div>kΩ ({minR.toFixed(1)} - {maxR.toFixed(1)} kΩ)</div>
+  ) : (
+    <div>kΩ (check VCC)</div>
+  )
+
+  const resistanceClasses = [
+    ['error', () => kOhm < minR || kOhm > maxR],
+    ['warning', () => !(kOhm < minR || kOhm > maxR) && ((1-minR/kOhm) < 0.1 || (1-kOhm/maxR) < 0.1)]
+  ]
+  const resistanceClassNames = resistanceClasses.filter(c => c[1]()).map(c => c[0]).join(' ')
+
   return (
     <div className='rise-time-calculator border-block'>
       <div className='row'>
         <div>VCC</div>
-        <input className={isNaN(maxLowVoltage) ? 'error' : ''} value={vcc} onChange={e => setVcc(e.target.value)}/>
+        <input className={isNaN(maxLowVoltage) || (minR >= maxR) ? 'error' : ''} value={vcc} onChange={e => setVcc(e.target.value)}/>
         <div>V</div>
       </div>
       <div className='row'>
@@ -163,9 +177,9 @@ const RiseTimeCalculator = observer(function RiseTimeCalclator() {
       </div>
       <div className='row'>
         <div>Bus pull-up resistance</div>
-        <input className={(kOhm > maxR || kOhm < minR) ? 'error' : ''} value={kOhm}
+        <input className={resistanceClassNames} value={kOhm}
                onChange={e => setKOhm(e.target.value)}/>
-        <div>kΩ (&gt;{minR.toFixed(1)} kΩ, &lt;{maxR.toFixed(1)} kΩ)</div>
+        {minmax}
       </div>
     </div>
   )

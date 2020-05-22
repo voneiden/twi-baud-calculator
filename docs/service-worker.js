@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/twi-baud-calculator/precache-manifest.2d275209dc4eabb6cb0f30dc8548b9dd.js"
+  "/twi-baud-calculator/precache-manifest.cc8b70c983d57cf00d9216c86670b2be.js"
 );
 
 self.addEventListener('message', (event) => {
