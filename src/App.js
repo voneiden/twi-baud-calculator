@@ -11,7 +11,8 @@ const I2CSpec = [
     maxNanoRise: 1000,
     maxPF: 400,
     maxLowVoltage: 0.4,
-    maxLowVoltageBelowTwo: () => NaN
+    maxLowVoltageBelowTwo: () => NaN,
+    minBaud: 1,
   },
   {
     id: 1,
@@ -20,7 +21,8 @@ const I2CSpec = [
     maxNanoRise: 300,
     maxPF: 400,
     maxLowVoltage: 0.4,
-    maxLowVoltageBelowTwo: vcc => 0.2 * vcc
+    maxLowVoltageBelowTwo: vcc => 0.2 * vcc,
+    minBaud: 1,
   },
   {
     id: 2,
@@ -29,7 +31,8 @@ const I2CSpec = [
     maxNanoRise: 120,
     maxPF: 550,
     maxLowVoltage: 0.4,
-    maxLowVoltageBelowTwo: vcc => 0.2 * vcc
+    maxLowVoltageBelowTwo: vcc => 0.2 * vcc,
+    minBaud: 3,
   }
 ]
 
@@ -186,7 +189,8 @@ const BaudRateCalculator = observer(function BaudRateCalculator(props) {
         <div>kHz</div>
       </div>
       <div className='rise-time'>T<sub>rise</sub> is {Math.trunc(nanoRiseTime)} ns</div>
-      <div className='baud'>BAUD is {Math.trunc(baud)}</div>
+      <div className='baud'>BAUD is {Math.ceil(baud)}</div>
+      {spec.minBaud > Math.ceil(baud) && <div className='error'>Baud cannot be less than {spec.minBaud} in {spec.name}</div>}
     </div>
   )
 })
@@ -197,19 +201,34 @@ const MainView = function MainView() {
     <div className="main-view">
       <div className='title'>TWI I<sup>2</sup>C BAUD Calculator</div>
       <div className='subtitle'>For ATtiny 1-series and similar devices</div>
-      <div className='info'>
-        Estimate your TWI I<sup>2</sup>C BAUD rate and pull-up resistors.<br/>
-        A too high pull-up resistance may not manage to pull the signal to logic high during a single clock cycle.<br/>
-        A too low pull-up resistance may lead to bus devices being unable to sink enough current to pull the signal to logic low.<br/>
-        Bus capacitance can be very roughly estimated by adding 20 pF for every device on the bus if distances are
-        short. <br/>
-        BAUD in this context determines how long a clock signal is kept high after a high level is detected. Therefore a higher
-        BAUD results in a slower bus clock. In practice due to bus capacitance and pull-up resistance some time of the clock cycle is
-        lost while the bus voltage rises to a logic high (T<sub>rise</sub>). To compensate for this, BAUD can be set to a lower value.
-      </div>
+
       <TWIMode/>
       <RiseTimeCalculator/>
       <BaudRateCalculator/>
+
+      <div className='info'>
+        <p>Estimate your TWI I<sup>2</sup>C BAUD rate and pull-up resistors.</p>
+        <p>
+          A pull-up resistance that is too high may not manage to pull the signal to logic high during a single clock
+          cycle.
+        </p>
+        <p>
+          A pull-up resistance that is too low may lead to bus devices being unable to sink enough current to pull the signal
+          to logic low.
+        </p>
+        <p>
+          Bus capacitance, if measuring is not possible, can be very roughly estimated by adding 20 pF for every device on the bus if distances are
+          short.
+        </p>
+        <p>
+          BAUD in this context determines how long a clock signal is kept high after a high level is detected.
+          Therefore a higher
+          BAUD results in a slower bus clock. In practice due to bus capacitance and pull-up resistance some time of the
+          clock cycle is
+          lost while the bus voltage rises to a logic high (T<sub>rise</sub>). To compensate for this, BAUD can be set
+          to a lower value.
+        </p>
+      </div>
     </div>
   );
 }
