@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "046078465848013236c8e96ab40112a5",
+    "revision": "afa3198727bd5151e68644adc9e5401d",
     "url": "/twi-baud-calculator/index.html"
   },
   {
-    "revision": "568f8fe8cb2468bb9108",
-    "url": "/twi-baud-calculator/static/css/main.55b5840d.chunk.css"
+    "revision": "008fee133bf9b09ec792",
+    "url": "/twi-baud-calculator/static/css/main.75217024.chunk.css"
   },
   {
     "revision": "c83283b691457edeec79",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/twi-baud-calculator/static/js/2.5dfea3cf.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "568f8fe8cb2468bb9108",
-    "url": "/twi-baud-calculator/static/js/main.7d1442f2.chunk.js"
+    "revision": "008fee133bf9b09ec792",
+    "url": "/twi-baud-calculator/static/js/main.b910214f.chunk.js"
   },
   {
     "revision": "c345114cb730f710800a",

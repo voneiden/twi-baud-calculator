@@ -84,11 +84,11 @@ const StoreModel = types.model({
   },
   get minR() {
     const R = (parseFloat(self.form.vcc) - self.maxLowVoltage) / self.sinkMA
-    return Math.ceil(R*10) / 10
+    return Math.ceil(R * 10) / 10
   },
   get maxR() {
     const R = self.spec.maxNanoRise / (0.8473 * parseFloat(self.form.pF))
-    return Math.floor(R*10) / 10
+    return Math.floor(R * 10) / 10
   },
   get baud() {
     const riseTime = self.nanoRiseTime / 1e9
@@ -159,7 +159,7 @@ const RiseTimeCalculator = observer(function RiseTimeCalclator() {
 
   const resistanceClasses = [
     ['error', () => kOhm < minR || kOhm > maxR],
-    ['warning', () => !(kOhm < minR || kOhm > maxR) && ((1-minR/kOhm) < 0.1 || (1-kOhm/maxR) < 0.1)]
+    ['warning', () => !(kOhm < minR || kOhm > maxR) && ((1 - minR / kOhm) < 0.1 || (1 - kOhm / maxR) < 0.1)]
   ]
   const resistanceClassNames = resistanceClasses.filter(c => c[1]()).map(c => c[0]).join(' ')
 
@@ -167,7 +167,8 @@ const RiseTimeCalculator = observer(function RiseTimeCalclator() {
     <div className='rise-time-calculator border-block'>
       <div className='row'>
         <div>VCC</div>
-        <input className={isNaN(maxLowVoltage) || (minR >= maxR) ? 'error' : ''} value={vcc} onChange={e => setVcc(e.target.value)}/>
+        <input className={isNaN(maxLowVoltage) || (minR >= maxR) ? 'error' : ''} value={vcc}
+               onChange={e => setVcc(e.target.value)}/>
         <div>V</div>
       </div>
       <div className='row'>
@@ -204,7 +205,8 @@ const BaudRateCalculator = observer(function BaudRateCalculator(props) {
       </div>
       <div className='rise-time'>T<sub>rise</sub> is {Math.trunc(nanoRiseTime)} ns</div>
       <div className='baud'>BAUD is {Math.ceil(baud)}</div>
-      {spec.minBaud > Math.ceil(baud) && <div className='error'>Baud cannot be less than {spec.minBaud} in {spec.name}</div>}
+      {spec.minBaud > Math.ceil(baud) &&
+      <div className='error'>Baud cannot be less than {spec.minBaud} in {spec.name}</div>}
     </div>
   )
 })
@@ -223,15 +225,18 @@ const MainView = function MainView() {
       <div className='info'>
         <p>Estimate your TWI I<sup>2</sup>C BAUD rate and pull-up resistors.</p>
         <p>
-          A pull-up resistance that is too high may not manage to pull the signal to logic high during a single clock
-          cycle.
-        </p>
-        <p>
-          A pull-up resistance that is too low may lead to bus devices being unable to sink enough current to pull the signal
+          A pull-up resistance that is too low may lead to bus devices being unable to sink enough current to pull the
+          signal
           to logic low.
         </p>
         <p>
-          Bus capacitance, if measuring is not possible, can be very roughly estimated by adding 20 pF for every device on the bus if distances are
+          A pull-up resistance that is too high may not manage to pull the signal up fast enough to stay within the
+          limits of the specification.
+          This in turn may lead to undefined behaviour.
+        </p>
+        <p>
+          Bus capacitance, if measuring is not possible, can be very roughly estimated by adding 20 pF for every device
+          on the bus if distances are
           short.
         </p>
         <p>

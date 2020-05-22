@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/twi-baud-calculator/static/css/main.55b5840d.chunk.css",
-    "main.js": "/twi-baud-calculator/static/js/main.7d1442f2.chunk.js",
-    "main.js.map": "/twi-baud-calculator/static/js/main.7d1442f2.chunk.js.map",
+    "main.css": "/twi-baud-calculator/static/css/main.75217024.chunk.css",
+    "main.js": "/twi-baud-calculator/static/js/main.b910214f.chunk.js",
+    "main.js.map": "/twi-baud-calculator/static/js/main.b910214f.chunk.js.map",
     "runtime-main.js": "/twi-baud-calculator/static/js/runtime-main.d738e60d.js",
     "runtime-main.js.map": "/twi-baud-calculator/static/js/runtime-main.d738e60d.js.map",
     "static/js/2.5dfea3cf.chunk.js": "/twi-baud-calculator/static/js/2.5dfea3cf.chunk.js",
     "static/js/2.5dfea3cf.chunk.js.map": "/twi-baud-calculator/static/js/2.5dfea3cf.chunk.js.map",
     "index.html": "/twi-baud-calculator/index.html",
-    "precache-manifest.cc8b70c983d57cf00d9216c86670b2be.js": "/twi-baud-calculator/precache-manifest.cc8b70c983d57cf00d9216c86670b2be.js",
+    "precache-manifest.fc383a9fab7d79c384bd2c463b09d284.js": "/twi-baud-calculator/precache-manifest.fc383a9fab7d79c384bd2c463b09d284.js",
     "service-worker.js": "/twi-baud-calculator/service-worker.js",
-    "static/css/main.55b5840d.chunk.css.map": "/twi-baud-calculator/static/css/main.55b5840d.chunk.css.map",
+    "static/css/main.75217024.chunk.css.map": "/twi-baud-calculator/static/css/main.75217024.chunk.css.map",
     "static/js/2.5dfea3cf.chunk.js.LICENSE.txt": "/twi-baud-calculator/static/js/2.5dfea3cf.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d738e60d.js",
     "static/js/2.5dfea3cf.chunk.js",
-    "static/css/main.55b5840d.chunk.css",
-    "static/js/main.7d1442f2.chunk.js"
+    "static/css/main.75217024.chunk.css",
+    "static/js/main.b910214f.chunk.js"
   ]
 }
